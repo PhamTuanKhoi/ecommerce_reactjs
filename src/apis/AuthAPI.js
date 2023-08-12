@@ -2,11 +2,11 @@ import axios from "axios";
 const path = "/auth/";
 
 export const AuthAPI = {
-   async register(payload) {
+   async signup(payload) {
       return await axios.post(path + "signup", payload);
    },
 
-   async login(payload) {
+   async signin(payload) {
       return await axios.post(path + "signin", payload);
    },
 };
