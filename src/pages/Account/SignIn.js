@@ -40,7 +40,7 @@ const SignIn = () => {
       if (email && password) {
          try {
             const { data } = await AuthAPI.signin({ email, password });
-            jwtManager.set(data?.jwt);
+            await jwtManager.set(data?.jwt);
             setSuccessMsg(
                `Hello dear, Thank you for your attempt. We are processing to validate your access. Till then stay connected and additional assistance will be sent to you by your mail at ${email}`
             );

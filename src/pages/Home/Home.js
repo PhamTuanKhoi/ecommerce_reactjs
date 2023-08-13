@@ -8,19 +8,19 @@ import SpecialOffers from "../../components/home/SpecialOffers/SpecialOffers";
 import YearProduct from "../../components/home/YearProduct/YearProduct";
 
 const Home = () => {
-  return (
-    <div className="w-full mx-auto">
-      <Banner />
-      <BannerBottom />
-      <div className="max-w-container mx-auto px-4">
-        <Sale />
-        <NewArrivals />
-        <BestSellers />
-        <YearProduct />
-        <SpecialOffers />
+   return (
+      <div className="w-full mx-auto">
+         <Banner />
+         <BannerBottom />
+         <div className="max-w-container mx-auto px-4">
+            <Sale />
+            <NewArrivals />
+            <BestSellers />
+            <YearProduct />
+            <SpecialOffers />
+         </div>
       </div>
-    </div>
-  );
+   );
 };
 
 export default Home;

@@ -7,4 +7,8 @@ export const ProductAPI = {
          params: query,
       });
    },
+
+   async newArrivals() {
+      return await axios.get(path + "new");
+   },
 };
