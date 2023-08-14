@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { BsCheckCircleFill } from "react-icons/bs";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthAPI } from "../../apis/AuthAPI";
 import { logoLight } from "../../assets/images";
 import { jwtManager } from "../../helpers/jwtManager";
@@ -16,6 +16,8 @@ const SignIn = () => {
 
    // ============= Error Msg End here ===================
    const [successMsg, setSuccessMsg] = useState("");
+
+   const navigate = useNavigate();
    // ============= Event Handler Start here =============
    const handleEmail = (e) => {
       setEmail(e.target.value);
@@ -39,8 +41,12 @@ const SignIn = () => {
       // ============== Getting the value ==============
       if (email && password) {
          try {
+            await jwtManager.clear();
+
             const { data } = await AuthAPI.signin({ email, password });
+
             await jwtManager.set(data?.jwt);
+            navigate("/");
             setSuccessMsg(
                `Hello dear, Thank you for your attempt. We are processing to validate your access. Till then stay connected and additional assistance will be sent to you by your mail at ${email}`
             );
@@ -48,6 +54,7 @@ const SignIn = () => {
             setPassword("");
          } catch (error) {
             console.log(error);
+            setSuccessMsg(error?.message);
          }
       }
    };
